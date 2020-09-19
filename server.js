@@ -15,8 +15,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
-require("./seeders/seed.js");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 // Routes
 require("./routes/html-routes.js")(app);
