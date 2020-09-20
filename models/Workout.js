@@ -9,46 +9,41 @@ const WorkoutSchema = new Schema({
   exercises: [
     {
       type: {
-        type: String,
-        required: true
+        type: String
       },
       name: {
-        type: String,
-        required: true
+        type: String
       },
       duration: {
         type: Number,
-        required: true
+        default: 0
       },
       weight: {
-        type: Number,
-        required: true
+        type: Number
       },
       reps: {
-        type: Number,
-        required: true
+        type: Number
       }, 
       sets: {
-        type: Number,
-        required: true
+        type: Number
       },
     }
   ], 
   totalDuration: {
     type: Number,
-    required: false
+    default: 0
   }
 });
 
 // Set total duration
 WorkoutSchema.methods.setTotalDuration = function() {
+  console.log("******************")
+  console.log("setTotalDuration is being called!!!")
   this.totalDuration = 0;
-  console.log("***********************")
-  console.log(this.exercises)
-  console.log("***********************")
-  console.log("***********************")
-  console.log(this.totalDuration)
-  console.log("***********************")
+  console.log(this.exercises);
+  this.exercises.forEach(exercise => {
+    this.totalDuration += exercise.duration
+  });
   return this.totalDuration;
 }
 

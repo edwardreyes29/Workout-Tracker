@@ -17,10 +17,6 @@ module.exports = function (app) {
 
   // Add an exercise (Id is not matching)
   app.put("/api/workouts/:id", ({body, params}, res) => {
-    console.log("==========================")
-    console.log(params.id);
-    console.log(body)
-    console.log("==========================")
     const workout = new Workout(body)
     workout.setTotalDuration();
 
